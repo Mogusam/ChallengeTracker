@@ -21,8 +21,7 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	
 	compile(group: 'org.postgresql', name: 'postgresql', version: '42.0.0')
-//	compile(group: 'org.liquibase', name: 'liquibase-core', version: '3.5.3')
-	
+	compile("org.liquibase:liquibase-core")
 	
 	providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
