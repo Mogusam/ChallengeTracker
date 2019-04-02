@@ -36,6 +36,7 @@ dependencies {
 	runtimeOnly 'org.webjars:bootstrap:4.1.3'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	compile 'com.github.jsimone:webapp-runner:8.5.11.3'
+	compile group: 'org.springframework.boot', name: 'spring-boot-gradle-plugin', version: '2.1.3.RELEASE', ext: 'pom'
 }
 
 
