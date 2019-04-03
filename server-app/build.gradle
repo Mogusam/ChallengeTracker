@@ -23,7 +23,6 @@ dependencies {
 	compile(group: 'org.postgresql', name: 'postgresql', version: '42.0.0')
 	compile("org.liquibase:liquibase-core")
 	
-	providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'org.springframework.security:spring-security-test'
 }
