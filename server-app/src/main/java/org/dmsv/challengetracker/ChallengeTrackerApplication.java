@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class ChallengetrackerApplication {
+public class ChallengeTrackerApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(ChallengetrackerApplication.class, args);
+        SpringApplication.run(ChallengeTrackerApplication.class, args);
     }
 
 }
