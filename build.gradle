@@ -5,7 +5,27 @@ plugins {
 }
 
 apply plugin: 'io.spring.dependency-management'
+apply plugin: 'java'
+apply plugin: 'war'
 
+//dependencies {
+//	compile 'com.github.jsimone:webapp-runner:8.5.11.3'
+//}
+springBoot {
+    mainClassName = 'org.dmsv.challengetracker.ChallengeTrackerApplication'
+}
+war {
+	archiveBaseName ='challengtracker'
+	enabled=true
+	webInf{from('ui-web')}
+}
+
+processResources{
+	from('ui-web')
+	from('db')
+
+
+}
 
 group = 'org.dmsv'
 version = '0.0.1-SNAPSHOT'
@@ -16,6 +36,7 @@ repositories {
 }
 
 dependencies {
+	implementation project(':server-app')
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-security'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
