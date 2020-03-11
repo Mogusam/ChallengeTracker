@@ -22,8 +22,6 @@ war {
 
 processResources{
 	from('ui-web')
-	from('db')
-
 
 }
 

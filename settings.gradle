@@ -3,4 +3,9 @@ pluginManagement {
 		gradlePluginPortal()
 	}
 }
-rootProject.name = 'challengetracker'
+
+rootProject.name = 'challengeTracker'
+include ':server-app'
+include 'ui-web'
+include 'db'
+
