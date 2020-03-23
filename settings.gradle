@@ -7,5 +7,5 @@ pluginManagement {
 rootProject.name = 'challengeTracker'
 include ':server-app'
 include 'ui-web'
-include 'db'
+//include 'db'
 

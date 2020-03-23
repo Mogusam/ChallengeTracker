@@ -2,15 +2,14 @@ plugins {
 	id 'org.springframework.boot' version '2.1.3.RELEASE'
 	id 'java'
 	id 'war'
+	id "com.moowork.node" version "1.3.1"
 }
 
 apply plugin: 'io.spring.dependency-management'
 apply plugin: 'java'
 apply plugin: 'war'
+apply plugin: "com.moowork.node"
 
-//dependencies {
-//	compile 'com.github.jsimone:webapp-runner:8.5.11.3'
-//}
 springBoot {
     mainClassName = 'org.dmsv.challengetracker.ChallengeTrackerApplication'
 }
@@ -22,6 +21,7 @@ war {
 
 processResources{
 	from('ui-web')
+	from('db')
 
 }
 
