@@ -16,11 +16,9 @@ springBoot {
 war {
 	archiveBaseName ='challengtracker'
 	enabled=true
-	webInf{from('ui-web')}
 }
 
 processResources{
-	from('ui-web')
 	from('db')
 
 }
@@ -40,13 +38,43 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	
 	compile(group: 'org.postgresql', name: 'postgresql', version: '42.0.0')
-//	compile(group: 'org.liquibase', name: 'liquibase-core', version: '3.5.3')
-	
+
 	
 	providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'org.springframework.security:spring-security-test'
 }
 
-task stage(dependsOn: ['build', 'clean'])
-build.mustRunAfter clean
+//=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+// Read more about how to configure the plugin from
+// https://github.com/srs/gradle-node-plugin/blob/master/docs/node.md
+node {
+	download = true
+
+	// Set the work directory for unpacking node
+	workDir = file("${project.buildDir}/nodejs")
+
+	// Set the work directory for NPM
+	npmWorkDir = file("${project.buildDir}/npm")
+}
+
+task appNpmInstall(type: NpmTask) {
+	description = "Installs all dependencies from package.json"
+	workingDir = file("${project.projectDir}/webapp")
+	args = ["install"]
+}
+
+task appNpmBuild(type: NpmTask) {
+	description = "Builds production version of the webapp"
+	workingDir = file("${project.projectDir}/webapp")
+	args = ["run", "build"]
+}
+
+task copyWebApp(type: Copy) {
+	from '/webapp/build'
+	into 'build/resources/main/static/.'
+}
+
+appNpmBuild.dependsOn appNpmInstall
+copyWebApp.dependsOn appNpmBuild
+compileJava.dependsOn copyWebApp

@@ -13,7 +13,7 @@ public class ChallengeTemplateController {
     @Autowired
     private ChallengeTemplateRepository repository;
 
-    @GetMapping(value = "/templates")
+    @GetMapping(value = "/api/templates")
     private List<ChallengeTemplate> templateList() {
         return repository.findAll();
     }
