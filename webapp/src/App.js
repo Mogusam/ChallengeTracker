@@ -1,35 +1,54 @@
-import React, {Component} from 'react';
-import logo from './logo.svg';
-import './App.css';
-class App extends Component {
+import React, { useRef, useEffect } from 'react';
+import { useLocation, Switch } from 'react-router-dom';
+import AppRoute from './utils/AppRoute';
+import ScrollReveal from './utils/ScrollReveal';
+import ReactGA from 'react-ga';
+import Hero from './components/sections/Hero';
+import Login from './components/sections/Login';
 
-    state = {};
 
-        componentDidMount() {
-            this.dadJokes()
-        }
+// Layouts
+import LayoutDefault from './layouts/LayoutDefault';
 
-    dadJokes = () => {
-        fetch('/api/templates')
-            .then(response => response.text())
-            .then(message => {
-                this.setState({message: message});
-            });
-    };
+// Views 
+import Home from './views/Home';
 
-    render() {
-        return (
-            <div className="App">
-            <header className="App-header">
-            <img src={logo} className="App-logo" alt="logo"/>
-            <h3 className="App-title">{this.state.message}</h3>
-            </header>
-            <p className="App-intro">
-            To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-        </div>
-    );
-    }
+// Initialize Google Analytics
+ReactGA.initialize(process.env.REACT_APP_GA_CODE);
+
+const trackPage = page => {
+  ReactGA.set({ page });
+  ReactGA.pageview(page);
+};
+
+const App = () => {
+
+  const childRef = useRef();
+  let location = useLocation();
+
+  useEffect(() => {
+    const page = location.pathname;
+    document.body.classList.add('is-loaded')
+    childRef.current.init();
+    trackPage(page);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [location]);
+
+  return (
+    <ScrollReveal
+      ref={childRef}
+      children={() => (
+        <Switch>
+          <AppRoute exact path="/" component={Home} layout={LayoutDefault} />
+          <AppRoute path="/new" сomponent={Hero} layout={LayoutDefault}  />
+          <AppRoute path="/login" component={Login} layout={LayoutDefault} />
+
+
+
+
+        </Switch>
+      )} />
+  );
 }
 
 export default App;
