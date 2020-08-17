@@ -9,6 +9,7 @@ import Login from './components/sections/Login';
 
 // Layouts
 import LayoutDefault from './layouts/LayoutDefault';
+import LayoutSignOn from './layouts/LayoutSignOn';
 
 // Views 
 import Home from './views/Home';
@@ -41,7 +42,7 @@ const App = () => {
         <Switch>
           <AppRoute exact path="/" component={Home} layout={LayoutDefault} />
           <AppRoute path="/new" сomponent={Hero} layout={LayoutDefault}  />
-          <AppRoute path="/login" component={Login} layout={LayoutDefault} />
+          <AppRoute path="/login" component={Login} layout={LayoutSignOn} />
 
 
 

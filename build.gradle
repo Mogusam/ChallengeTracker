@@ -49,6 +49,11 @@ dependencies {
 // Read more about how to configure the plugin from
 // https://github.com/srs/gradle-node-plugin/blob/master/docs/node.md
 node {
+	// Version of node to use.
+	version = '12.14.1'
+
+	// Version of npm to use.
+	npmVersion = '6.13.4'
 	download = true
 
 	// Set the work directory for unpacking node

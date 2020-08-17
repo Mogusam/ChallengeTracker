@@ -1,67 +1,46 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
-import { SectionProps } from '../../utils/SectionProps';
 import Input from '../elements/Input';
+import Button from '../elements/Button';
+import ButtonGroup from '../elements/ButtonGroup';
+import GenericSection from './GenericSection';
+import Footer from '../layout/Footer';
 
-
-const Login =({
- className,
-  topOuterDivider,
-  bottomOuterDivider,
-  topDivider,
-  bottomDivider,
-  hasBgColor,
-  invertColor,
-  split,
-//  ...props
-
-}) =>{
- const outerClasses = classNames(
-    'cta section center-content-mobile reveal-from-bottom',
-    topOuterDivider && 'has-top-divider',
-    bottomOuterDivider && 'has-bottom-divider',
-    hasBgColor && 'has-bg-color',
-    invertColor && 'invert-color',
-    className
-  );
-
-  const innerClasses = classNames(
-    'cta-inner section-inner',
-    topDivider && 'has-top-divider',
-    bottomDivider && 'has-bottom-divider',
-    split && 'cta-split'
-  );
+const Login = () => {
 
 
 
-return(
-
-<section
-//      {...props}
-      className={outerClasses}
-    >
-      <div className="container">
-        <div
-          className={innerClasses}
-        >
-          <div className="cta-slogan">
-            <h3 className="m-0">
-              For previewing layouts and visual?
-              </h3>
-          </div>
-          <div className="cta-action">
-            <Input id="newsletter" type="email" label="Subscribe" labelHidden hasIcon="right" placeholder="Your best email">
-              <svg width="16" height="12" xmlns="http://www.w3.org/2000/svg">
-                <path d="M9 5H1c-.6 0-1 .4-1 1s.4 1 1 1h8v5l7-6-7-6v5z" fill="#376DF9" />
-              </svg>
-            </Input>
-          </div>
-        </div>
+  return (
+    <GenericSection topOuterDivider bottomOuterDivider center-content>
+      <div className="container-400 " align='left'>
+        <form>
+          <fieldset>
+            <div className="m-32" align='left'>
+              <Input type="text" size="sm" placeholder="Username" hint='Nickname or email' />
+            </div>
+            <div className="m-32">
+              <Input type="password" size="sm" placeholder="Password" hint='Secret password' />
+            </div>
+            <div className="mb-16 center-content">
+              <ButtonGroup >
+                <Button color="primary">Log in</Button>
+                <Button color="secondary">New User</Button>
+              </ButtonGroup>
+            </div>
+          </fieldset>
+        </form>
+       
+        <Footer />
       </div>
-    </section>
 
-)
+
+
+
+
+
+    </GenericSection>
+
+  )
+
 
 }
 

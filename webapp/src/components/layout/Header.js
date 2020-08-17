@@ -3,11 +3,6 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import {Link} from 'react-router-dom';
 import Logo from './partials/Logo';
-import Hero from '../sections/Hero'
-import LayoutDefault from '../../layouts/LayoutDefault';
-
-// Views
-import Home from '../../views/Home';
 
 const propTypes = {
   navPosition: PropTypes.string,
