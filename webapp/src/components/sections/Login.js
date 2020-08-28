@@ -10,17 +10,17 @@ const Login = () => {
 
 
   return (
-    <GenericSection topOuterDivider bottomOuterDivider center-content>
-      <div className="container-400 " align='left'>
+    <GenericSection  center-content>
+      <div className="container-250 " >
         <form>
           <fieldset>
-            <div className="m-32" align='left'>
-              <Input type="text" size="sm" placeholder="Username" hint='Nickname or email' />
+            <div className="m-4" align='left'>
+              <Input type="text"  size="sm" placeholder="Username" hint='Nickname or email' />
             </div>
-            <div className="m-32">
+            <div className="m-4">
               <Input type="password" size="sm" placeholder="Password" hint='Secret password' />
             </div>
-            <div className="mb-16 center-content">
+            <div className="mb-8 center-content">
               <ButtonGroup >
                 <Button color="primary">Log in</Button>
                 <Button color="secondary">New User</Button>
@@ -29,7 +29,6 @@ const Login = () => {
           </fieldset>
         </form>
        
-        <Footer />
       </div>
 
 

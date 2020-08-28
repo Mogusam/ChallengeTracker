@@ -42,9 +42,7 @@ const App = () => {
         <Switch>
           <AppRoute exact path="/" component={Home} layout={LayoutDefault} />
           <AppRoute path="/new" сomponent={Hero} layout={LayoutDefault}  />
-          <AppRoute path="/login" component={Login} layout={LayoutSignOn} />
-
-
+          {/* <AppRoute path="/login" component={Login} layout={LayoutSignOn} /> */}
 
 
         </Switch>

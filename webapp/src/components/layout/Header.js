@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import {Link} from 'react-router-dom';
 import Logo from './partials/Logo';
+import Modal from '../elements/Modal';
+import Login from '../sections/Login';
 
 const propTypes = {
   navPosition: PropTypes.string,
@@ -31,7 +33,17 @@ const Header = ({
 }) => {
 
   const [isActive, setIsactive] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+  const openModal = (e) => {
+    e.preventDefault();
+    setShowModal(true);
+  }
 
+  const  closeModal = (e) => {
+    e.preventDefault();
+    setShowModal(false);
+  }
+ 
   const nav = useRef(null);
   const hamburger = useRef(null);
 
@@ -124,15 +136,19 @@ const Header = ({
 
                       <li>
                         <Link to="/signup" className="button button-primary button-wide-mobile button-sm" onClick={closeMenu}>Sign up</Link>
-                        <Link to="/login" className="button button-primary button-wide-mobile button-sm" onClick={closeMenu}>Log in</Link>
+                        {/* <Link to="/login" className="button button-primary button-wide-mobile button-sm" onClick={closeMenu}>Log in</Link> */}
+                        <Link to="/login2" className="button button-primary button-wide-mobile button-sm" onClick={openModal}>Login</Link>
                       </li>
 
                     </ul>
 
-
-
                     }
                 </div>
+                 <Modal
+                     show={showModal}
+                     handleClose={closeModal} >
+                        <Login />
+                    </Modal>
               </nav>
 
 
@@ -140,6 +156,7 @@ const Header = ({
             </>}
         </div>
       </div>
+     
     </header>
   );
 }
