@@ -17,7 +17,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception {
         //TODO enable  and setting up security
-        httpSecurity.authorizeRequests().antMatchers("/").permitAll();
+        httpSecurity.authorizeRequests().antMatchers("/login").permitAll();
     }
 
     @Bean

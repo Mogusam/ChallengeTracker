@@ -11,8 +11,8 @@ CREATE TABLE IF NOT EXISTS public.challenge_template
 
 CREATE TABLE IF NOT EXISTS public.challenge
 (
-    Challenge_Id serial,
-    Template_Id serial,
+    Id serial,
+    Template_Id integer,
     Start_Date date NOT NULL,
     End_Date date NOT NULL,
     Access character varying(50) NOT NULL,
@@ -20,7 +20,7 @@ CREATE TABLE IF NOT EXISTS public.challenge
     State character varying(50) NOT NULL,
     Moderated character varying(50) NOT NULL,
     Challenge_Settings jsonb NOT NULL,
-    CONSTRAINT PK_Challenge_Id PRIMARY KEY (Challenge_Id),
+    CONSTRAINT PK_Challenge_Id PRIMARY KEY (Id),
     CONSTRAINT FK_Template_Id FOREIGN KEY (Template_Id)
         REFERENCES public.challenge_template (Template_Id) MATCH SIMPLE
         ON UPDATE NO ACTION
@@ -43,7 +43,7 @@ CREATE TABLE IF NOT EXISTS public.user
 CREATE TABLE IF NOT EXISTS public.user_challenge
 (
     User_Id serial,
-    Challenge_Id serial,
+    challenge_id integer,
     User_Challenge_Role character varying(255) NOT NULL,
     User_Challenge_State character varying(50) NOT NULL,
     CONSTRAINT PK_User_Id_Challenge_Id PRIMARY KEY (User_Id, Challenge_Id),
@@ -51,8 +51,8 @@ CREATE TABLE IF NOT EXISTS public.user_challenge
         REFERENCES public.user (User_Id) MATCH SIMPLE
         ON UPDATE NO ACTION
         ON DELETE NO ACTION,
-    CONSTRAINT FK_Challenge_Id FOREIGN KEY (Challenge_Id)
-        REFERENCES public.challenge (Challenge_Id) MATCH SIMPLE
+    CONSTRAINT FK_Challenge_Id FOREIGN KEY (challenge_id)
+        REFERENCES public.challenge (Id) MATCH SIMPLE
         ON UPDATE NO ACTION
         ON DELETE NO ACTION
 );

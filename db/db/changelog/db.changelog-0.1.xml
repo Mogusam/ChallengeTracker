@@ -9,5 +9,7 @@
         <sqlFile path="../scripts/initial_challenge_challenge_template_user_user_challenge_tables.sql"
                  relativeToChangelogFile="true"/>
         <sqlFile path="../scripts/insert_template_challenges.sql" relativeToChangelogFile="true"/>
+        <sqlFile path="../scripts/insert_challenges.sql" relativeToChangelogFile="true"/>
     </changeSet>
+
 </databaseChangeLog>
