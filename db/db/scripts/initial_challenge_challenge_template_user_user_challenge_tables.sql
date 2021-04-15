@@ -13,12 +13,13 @@ CREATE TABLE IF NOT EXISTS public.challenge
 (
     Id serial,
     Template_Id integer,
+    Challenge_type_id integer,
     Start_Date date NOT NULL,
     End_Date date NOT NULL,
     Access character varying(50) NOT NULL,
     Stop_Strategy character varying(50) NOT NULL,
     State character varying(50) NOT NULL,
-    Moderated character varying(50) NOT NULL,
+    Moderated boolean NOT NULL,
     Challenge_Settings jsonb NOT NULL,
     CONSTRAINT PK_Challenge_Id PRIMARY KEY (Id),
     CONSTRAINT FK_Template_Id FOREIGN KEY (Template_Id)
@@ -55,4 +56,13 @@ CREATE TABLE IF NOT EXISTS public.user_challenge
         REFERENCES public.challenge (Id) MATCH SIMPLE
         ON UPDATE NO ACTION
         ON DELETE NO ACTION
+);
+
+CREATE TABLE IF NOT EXISTS public.challenge_type
+(
+    Id serial,
+    Type character varying(50) NOT NULL,
+    IsActive boolean,
+    CONSTRAINT PK_challenge_type_id PRIMARY KEY (Id)
+
 );

@@ -10,6 +10,7 @@
                  relativeToChangelogFile="true"/>
         <sqlFile path="../scripts/insert_template_challenges.sql" relativeToChangelogFile="true"/>
         <sqlFile path="../scripts/insert_challenges.sql" relativeToChangelogFile="true"/>
+        <sqlFile path="../scripts/insert_challenge_types.sql" relativeToChangelogFile="true"/>
     </changeSet>
 
 </databaseChangeLog>

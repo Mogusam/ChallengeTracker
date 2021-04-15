@@ -5,6 +5,7 @@ import ScrollReveal from './utils/ScrollReveal';
 import ReactGA from 'react-ga';
 import Hero from './components/sections/Hero';
 import Login from './components/sections/Login';
+import ChallengeCard from './components/sections/ChallengeCard';
 
 
 // Layouts
@@ -40,7 +41,8 @@ const App = () => {
       ref={childRef}
       children={() => (
         <Switch>
-          <AppRoute exact path="/" component={Home} layout={LayoutDefault} />
+           <AppRoute exact path="/" component={Home} layout={LayoutDefault} />
+          <AppRoute exact path="/" component={ChallengeCard} layout={LayoutDefault} />
           <AppRoute path="/new" сomponent={Hero} layout={LayoutDefault}  />
           {/* <AppRoute path="/login" component={Login} layout={LayoutSignOn} /> */}
 

@@ -1,5 +1,8 @@
 package org.dmsv.challengetracker.entity.enums;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public enum Access {
     PUBLIC("Y"),
     PRIVATE("N");
@@ -14,10 +17,16 @@ public enum Access {
         return value;
     }
 
-    @Override
-    public String toString() {
-        return "Access{" +
-                "value='" + value + '\'' +
-                '}';
+    //Lookup table
+    private static final Map<String, Access> lookup = new HashMap<>();
+
+    static {
+        for (Access access : Access.values()) {
+            lookup.put(access.getValue(), access);
+        }
+    }
+
+    public static Access get(String value) {
+        return lookup.get(value);
     }
 }

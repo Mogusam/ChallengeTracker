@@ -9,7 +9,7 @@ import org.dmsv.challengetracker.entity.enums.StopStrategy;
 public class Challenge {
     private int id;
 
-    private int idTemplate;
+    private int TemplateId;
 
     private LocalDate startDate;
 
@@ -25,20 +25,33 @@ public class Challenge {
 
     private Boolean moderated;
 
+    private int typeId;
+
+    private String type;
+
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public int getTemplateId() {
+        return TemplateId;
+    }
+
+    public void setTemplateId(int templateId) {
+        TemplateId = templateId;
+    }
+
     public int getId() {
         return id;
     }
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public int getIdTemplate() {
-        return idTemplate;
-    }
-
-    public void setIdTemplate(int idTemplate) {
-        this.idTemplate = idTemplate;
     }
 
     public LocalDate getStartDate() {
@@ -96,5 +109,13 @@ public class Challenge {
 
     public void setAccess(Access access) {
         this.access = access;
+    }
+
+    public int getTypeId() {
+        return typeId;
+    }
+
+    public void setTypeId(int typeId) {
+        this.typeId = typeId;
     }
 }
