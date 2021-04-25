@@ -18,10 +18,5 @@ public class ChallengeTemplateController {
         return repository.findAll();
     }
 
-    @GetMapping(value = "/login")
-    private List<ChallengeTemplate> login() {
-        return repository.findAll();
-    }
-
 
 }

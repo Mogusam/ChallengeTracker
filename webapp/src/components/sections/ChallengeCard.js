@@ -1,10 +1,8 @@
 import React from 'react';
 import Image from '../elements/Image';
 
-
 const ChallengeCard  = (props)=>{
 const iconPath = require('./../../assets/images/feature-tile-icon-0'+props.typeId+'.svg');
-
 
 return (
             <div className="tiles-item reveal-from-bottom is-revealed" data-reveal-delay="200">
@@ -13,7 +11,7 @@ return (
                   <div className="features-tiles-item-image mb-16">
                     <Image
                       src={iconPath}
-                      alt="Features tile icon "
+                      alt="Challenge type icon "
                       width={64}
                       height={64} />
                   </div>
@@ -31,14 +29,5 @@ return (
             </div>
     )
 
-
-
-
 }
-
-
-
-
-//ChallengeCard.propTypes = propTypes;
-//ChallengeCard.defaultProps = defaultProps;
 export default ChallengeCard;

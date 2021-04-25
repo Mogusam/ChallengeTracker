@@ -1,8 +1,8 @@
 import React from 'react';
 // import sections
 import Hero from '../components/sections/Hero';
-import FeaturesTiles from '../components/sections/FeaturesTiles';
-import FeaturesSplit from '../components/sections/FeaturesSplit';
+import CurrentChallenges from '../components/sections/CurrentChallenges';
+import CreateNewChallenge from '../components/sections/CreateNewChallenge';
 import Testimonial from '../components/sections/Testimonial';
 import Cta from '../components/sections/Cta';
 
@@ -11,20 +11,12 @@ const Home = () => {
   return (
     <>
       <Hero className="illustration-section-01" />
-      <FeaturesTiles />
-      <FeaturesSplit invertMobile topDivider imageFill className="illustration-section-02" />
+      <CurrentChallenges />
+      <CreateNewChallenge />
       <Testimonial topDivider />
       <Cta split />
 
-
-
-
-
     </>
-
-
-
-
   );
 }
 

@@ -13,7 +13,7 @@ const propTypes = {
 const defaultProps = {
   ...SectionTilesProps.defaults
 }
-const FeaturesTiles = ({
+const CurrentChallenges = ({
   className,
   topOuterDivider,
   bottomOuterDivider,
@@ -29,7 +29,7 @@ const FeaturesTiles = ({
   const [isLoaded, setIsLoaded] = useState(false);
   const [items, setItems] = useState([]);
 
-  const challengesUrl = 'http://localhost:8090/challenges/first-open/3';
+  const challengesUrl = 'http://localhost:8090/api/challenges/first-open/3';
   useEffect(() => {
     fetch(challengesUrl,   {
       mode:'no-cors',
@@ -114,7 +114,7 @@ else{
 }
 }
 
-FeaturesTiles.propTypes = propTypes;
-FeaturesTiles.defaultProps = defaultProps;
+CurrentChallenges.propTypes = propTypes;
+CurrentChallenges.defaultProps = defaultProps;
 
-export default FeaturesTiles;
+export default CurrentChallenges;
