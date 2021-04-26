@@ -1,8 +1,8 @@
 import React from 'react';
-import Image from '../elements/Image';
+import Image from '../../elements/Image';
 
 const ChallengeCard  = (props)=>{
-const iconPath = require('./../../assets/images/feature-tile-icon-0'+props.typeId+'.svg');
+const iconPath = require('./../../../assets/images/feature-tile-icon-0'+props.typeId+'.svg');
 
 return (
             <div className="tiles-item reveal-from-bottom is-revealed" data-reveal-delay="200">

@@ -1,10 +1,10 @@
 import React from 'react';
-import Image from '../elements/Image';
+import Image from '../../elements/Image';
 import { Link } from 'react-router-dom';
 
 const CreateNewChallenge  = (props)=>{
-const iconPath = require('./../../assets/images/create-new.png');
-const createNewLink = 'http://localhost:8090/challenges/';
+const iconPath = require('./../../../assets/images/create-new.png');
+const createNewLink = '/newChallenge';
 return (
             <Link to={createNewLink} >
                 <div className=" mb-16 center-content">
@@ -15,8 +15,6 @@ return (
                       height={64} />
                 </div>
             </Link>
-
     )
-
 }
 export default CreateNewChallenge;

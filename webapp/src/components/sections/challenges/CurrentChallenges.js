@@ -1,8 +1,8 @@
 import React, {useState, useEffect} from 'react';
 import classNames from 'classnames';
-import { SectionTilesProps } from '../../utils/SectionProps';
-import SectionHeader from './partials/SectionHeader';
-import Image from '../elements/Image';
+import { SectionTilesProps } from '../../../utils/SectionProps';
+import SectionHeader from './../partials/SectionHeader';
+import Image from '../../elements/Image';
 import ChallengeCard from './ChallengeCard';
 
 

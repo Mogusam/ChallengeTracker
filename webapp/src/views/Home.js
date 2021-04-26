@@ -1,8 +1,8 @@
 import React from 'react';
 // import sections
 import Hero from '../components/sections/Hero';
-import CurrentChallenges from '../components/sections/CurrentChallenges';
-import CreateNewChallenge from '../components/sections/CreateNewChallenge';
+import CurrentChallenges from '../components/sections/challenges/CurrentChallenges';
+import CreateNewChallenge from '../components/sections/challenges/CreateNewChallenge';
 import Testimonial from '../components/sections/Testimonial';
 import Cta from '../components/sections/Cta';
 
