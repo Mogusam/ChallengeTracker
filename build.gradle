@@ -2,13 +2,10 @@ plugins {
 	id 'org.springframework.boot' version '2.1.3.RELEASE'
 	id 'java'
 	id 'war'
-	id "com.moowork.node" version "1.3.1"
+	//id "com.moowork.node" version "1.3.1"
+	id 'com.github.node-gradle.node' version '2.2.0'
+	id "io.spring.dependency-management" version "1.0.11.RELEASE"
 }
-
-apply plugin: 'io.spring.dependency-management'
-apply plugin: 'java'
-apply plugin: 'war'
-apply plugin: "com.moowork.node"
 
 springBoot {
     mainClassName = 'org.dmsv.challengetracker.ChallengeTrackerApplication'
@@ -39,7 +36,6 @@ dependencies {
 	
 	compile(group: 'org.postgresql', name: 'postgresql', version: '42.0.0')
 
-	
 	providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'org.springframework.security:spring-security-test'
@@ -54,7 +50,12 @@ node {
 
 	// Version of npm to use.
 	npmVersion = '6.13.4'
+	// If true, it will download node using above parameters.
+	// If false, it will try to use globally installed node.
 	download = true
+
+	// Base URL for fetching node distributions (change if you have a mirror).
+	distBaseUrl = 'https://nodejs.org/dist'
 
 	// Set the work directory for unpacking node
 	workDir = file("${project.buildDir}/nodejs")

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 const CreateNewChallenge  = (props)=>{
 const iconPath = require('./../../../assets/images/create-new.png');
-const createNewLink = '/newChallenge';
+const createNewLink = '/challenges/new';
 return (
             <Link to={createNewLink} >
                 <div className=" mb-16 center-content">

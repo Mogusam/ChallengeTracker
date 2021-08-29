@@ -42,9 +42,9 @@ const App = () => {
       ref={childRef}
       children={() => (
         <Switch>
-           <AppRoute exact path="/" component={Home} layout={LayoutDefault} />
+          <AppRoute exact path="/" component={Home} layout={LayoutDefault} />
           <AppRoute exact path="/" component={ChallengeCard} layout={LayoutDefault} />
-          <AppRoute path="/newChallenge" component={NewChallengeForm} layout={LayoutDefault}  />
+          <AppRoute path="/challenges/new" component={NewChallengeForm} layout={LayoutDefault}  />
           {/* <AppRoute path="/login" component={Login} layout={LayoutSignOn} /> */}
 
 

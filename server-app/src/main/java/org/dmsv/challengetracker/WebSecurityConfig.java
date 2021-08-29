@@ -1,5 +1,6 @@
 package org.dmsv.challengetracker;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -16,7 +17,7 @@ import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
-//    @Autowired
+    //    @Autowired
 //    DataSource dataSource;
 //
 //    //Enable jdbc authentication
@@ -24,11 +25,15 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 //    public void configAuthentication(AuthenticationManagerBuilder auth) throws Exception {
 //        auth.jdbcAuthentication().dataSource(dataSource);
 //    }
+    @Autowired
+    RestAuthEntryPoint restAuthEntryPoint;
 
 
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception {
-        httpSecurity.authorizeRequests()
+        httpSecurity
+                .csrf().disable()
+                .authorizeRequests()
                 .antMatchers("/",
                         "/favicon.ico",
                         "/**/*.png",
@@ -38,13 +43,35 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                         "/**/*.html",
                         "/**/*.css",
                         "/**/*.js",
+                        "/**/*.json",
                         "/**/*.txt"
                             ).permitAll()
-                .antMatchers("/api/**", "/new").permitAll()
+                .antMatchers("/api/**", "/login2").permitAll()
+                .antMatchers("/challenges/**").hasRole("USER")
+                .anyRequest()
+                .authenticated()
+                .and()
+//                .exceptionHandling()
+//                .authenticationEntryPoint(restAuthEntryPoint)
+//                .and()
+                .formLogin()
+                .loginPage("/login2");
+//
+//                .and()
+//                .exceptionHandling()
+//                .authenticationEntryPoint(restAuthEntryPoint)
+//                .and()
+//                .formLogin()
 
-                .anyRequest().authenticated().and().httpBasic();
-        httpSecurity.csrf().disable();
-        super.configure(httpSecurity);
+//                .loginProcessingUrl("/login2");
+//                .defaultSuccessUrl("/homepage.html", true)
+//                .failureUrl("/login.html?error=true")
+////                .failureHandler(authenticationFailureHandler())
+//                .and()
+//                .logout()
+//                .logoutUrl("/perform_logout")
+//                .deleteCookies("JSESSIONID");
+//                .logoutSuccessHandler(logoutSuccessHandler());;
     }
 
     @Bean
@@ -62,9 +89,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Bean
     protected PasswordEncoder passwordEncoder() {
-
         return PasswordEncoderFactories.createDelegatingPasswordEncoder();
-
     }
 
 }
