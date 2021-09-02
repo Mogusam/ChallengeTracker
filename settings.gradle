@@ -6,4 +6,4 @@ pluginManagement {
 
 rootProject.name = 'challengeTracker'
 include ':server-app'
-
+include ':webapp'

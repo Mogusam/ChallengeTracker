@@ -1,0 +1,43 @@
+plugins {
+	id 'com.github.node-gradle.node' version '2.2.0'
+}
+apply plugin: 'java'
+repositories {
+	mavenCentral()
+}
+
+node {
+	version = '12.18.3'
+	npmVersion = ''
+	// If true, it will download node using above parameters.
+	// If false, it will try to use globally installed node.
+	download = true
+	distBaseUrl = 'https://nodejs.org/dist'
+
+	// The directory where Node.js is unpacked (when download is true)
+	workDir = file("${project.projectDir}/.gradle/nodejs")
+	npmWorkDir = file("${project.projectDir}/.gradle/npm")
+//	yarnWorkDir = file("${project.projectDir}/.gradle/yarn")
+}
+
+task appNpmInstall(type: NpmTask) {
+	description = "Installs all dependencies from package.json"
+//	workingDir = file("${project.projectDir}/webapp")
+	args = ["install"]
+}
+
+task buildReact(type: NpmTask) {
+	description = "Builds production version of the webapp"
+//	workingDir = file("${project.projectDir}/webapp")
+	args = ["run", "build"]
+}
+
+task copyWebApp(type: Copy) {
+	from '/webapp/build'
+	into 'build/resources/main/static/.'
+}
+
+
+
+compileJava.dependsOn(buildReact)
+buildReact.dependsOn(appNpmInstall)
