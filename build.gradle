@@ -45,4 +45,10 @@ task copyWebApp(type: Copy) {
 	into 'build/resources/main/static/.'
 }
 
+task cleanBuild() {
+	dependsOn clean
+	dependsOn bootRun
+}
+
+bootRun.dependsOn ':db:update'
 bootRun.dependsOn copyWebApp
